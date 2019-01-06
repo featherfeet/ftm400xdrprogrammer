@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DCSDIMNORMAL" xml:space="preserve">
+    <value>RX同相 TX同相</value>
+  </data>
+  <data name="SDREADERROR" xml:space="preserve">
+    <value>SD読み込みエラー</value>
+  </data>
+  <data name="EXPORTERROR" xml:space="preserve">
+    <value>エクスポートエラー</value>
+  </data>
+  <data name="SDWRITEERROR" xml:space="preserve">
+    <value>SD書き込みエラー</value>
+  </data>
+  <data name="DTMFCODE" xml:space="preserve">
+    <value>コード</value>
+  </data>
+  <data name="MESSAGE" xml:space="preserve">
+    <value>メッセージ</value>
+  </data>
+  <data name="SEARCHNOHIT" xml:space="preserve">
+    <value>データが見つかりません。</value>
+  </data>
+  <data name="CATEGORYNUM" xml:space="preserve">
+    <value>カテゴリー番号</value>
+  </data>
+  <data name="CHINSERT" xml:space="preserve">
+    <value>チャンネル挿入</value>
+  </data>
+  <data name="RECEIVING" xml:space="preserve">
+    <value>データ受信中</value>
+  </data>
+  <data name="MSGNUM" xml:space="preserve">
+    <value>メッセージ番号</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="FREQERRORMSG" xml:space="preserve">
+    <value>入力された値が異常です</value>
+  </data>
+  <data name="DCSCODE" xml:space="preserve">
+    <value>DCSコード</value>
+  </data>
+  <data name="INFOMSG" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="COMPLETED" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="FTM400DOKCLECK" xml:space="preserve">
+    <value>FTM-400Dの[OK?]をタッチすると送信がスタートします。</value>
+  </data>
+  <data name="CPUTYPEERROR" xml:space="preserve">
+    <value>接続する機種が違います</value>
+  </data>
+  <data name="CHINSERTINFO" xml:space="preserve">
+    <value>最上位のメモリーチャンネルが消去されます。
+続けてよろしいですか？</value>
+  </data>
+  <data name="SHIFTFREQ" xml:space="preserve">
+    <value>シフト周波数</value>
+  </data>
+  <data name="PRTONE" xml:space="preserve">
+    <value>PR TONE</value>
+  </data>
+  <data name="GROUPNUM" xml:space="preserve">
+    <value>グループ番号</value>
+  </data>
+  <data name="SQLTYPE" xml:space="preserve">
+    <value>スケルチタイプ</value>
+  </data>
+  <data name="CLOCKSHIFT" xml:space="preserve">
+    <value>クロックシフト</value>
+  </data>
+  <data name="MSGMESSAGE" xml:space="preserve">
+    <value>メッセージ</value>
+  </data>
+  <data name="DTMFCHANNELNUM" xml:space="preserve">
+    <value>CH番号</value>
+  </data>
+  <data name="RECVFREQ" xml:space="preserve">
+    <value>受信周波数</value>
+  </data>
+  <data name="MEMORYNAME" xml:space="preserve">
+    <value>メモリーネーム</value>
+  </data>
+  <data name="MEMORYMASK" xml:space="preserve">
+    <value>メモリー消去</value>
+  </data>
+  <data name="CHECKSUMERROR" xml:space="preserve">
+    <value>チェックサムエラー</value>
+  </data>
+  <data name="SENDING" xml:space="preserve">
+    <value>データ送信中</value>
+  </data>
+  <data name="SENDOUT" xml:space="preserve">
+    <value>送信出力</value>
+  </data>
+  <data name="VHFBAND" xml:space="preserve">
+    <value>VHF HAM</value>
+  </data>
+  <data name="FORMATERROR" xml:space="preserve">
+    <value>フォーマットエラー</value>
+  </data>
+  <data name="MEMBERNAME20" xml:space="preserve">
+    <value>メンバー名20</value>
+  </data>
+  <data name="MEMBERNAME21" xml:space="preserve">
+    <value>メンバー名21</value>
+  </data>
+  <data name="MEMBERNAME22" xml:space="preserve">
+    <value>メンバー名22</value>
+  </data>
+  <data name="MEMBERNAME23" xml:space="preserve">
+    <value>メンバー名23</value>
+  </data>
+  <data name="MEMBERNAME24" xml:space="preserve">
+    <value>メンバー名24</value>
+  </data>
+  <data name="MEMBERNAME13" xml:space="preserve">
+    <value>メンバー名13</value>
+  </data>
+  <data name="MEMBERNAME12" xml:space="preserve">
+    <value>メンバー名12</value>
+  </data>
+  <data name="MEMBERNAME11" xml:space="preserve">
+    <value>メンバー名11</value>
+  </data>
+  <data name="MEMBERNAME10" xml:space="preserve">
+    <value>メンバー名10</value>
+  </data>
+  <data name="MEMBERNAME17" xml:space="preserve">
+    <value>メンバー名17</value>
+  </data>
+  <data name="MEMBERNAME16" xml:space="preserve">
+    <value>メンバー名16</value>
+  </data>
+  <data name="MEMBERNAME15" xml:space="preserve">
+    <value>メンバー名15</value>
+  </data>
+  <data name="MEMBERNAME14" xml:space="preserve">
+    <value>メンバー名14</value>
+  </data>
+  <data name="MEMBERNAME19" xml:space="preserve">
+    <value>メンバー名19</value>
+  </data>
+  <data name="MEMBERNAME18" xml:space="preserve">
+    <value>メンバー名18</value>
+  </data>
+  <data name="CLOSE" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="GR1BAND" xml:space="preserve">
+    <value>GR1</value>
+  </data>
+  <data name="GR2BAND" xml:space="preserve">
+    <value>GR2</value>
+  </data>
+  <data name="INPORTERROR" xml:space="preserve">
+    <value>インポートエラー</value>
+  </data>
+  <data name="UHFBAND" xml:space="preserve">
+    <value>UHF HAM</value>
+  </data>
+  <data name="COMPORTOPENERROR" xml:space="preserve">
+    <value>ポートが開けません。</value>
+  </data>
+  <data name="SENDFREQ" xml:space="preserve">
+    <value>送信周波数</value>
+  </data>
+  <data name="SDWRITECOMPLETE" xml:space="preserve">
+    <value>SD書き込み完了</value>
+  </data>
+  <data name="TIMEOUTERROR" xml:space="preserve">
+    <value>タイムアウトエラー</value>
+  </data>
+  <data name="COMMENT" xml:space="preserve">
+    <value>コメント</value>
+  </data>
+  <data name="TONEFREQ" xml:space="preserve">
+    <value>トーン周波数</value>
+  </data>
+  <data name="CHANNELNUM" xml:space="preserve">
+    <value>チャンネル番号</value>
+  </data>
+  <data name="MEMBERNAME2" xml:space="preserve">
+    <value>メンバー名2</value>
+  </data>
+  <data name="MEMBERNAME3" xml:space="preserve">
+    <value>メンバー名3</value>
+  </data>
+  <data name="MEMBERNAME1" xml:space="preserve">
+    <value>メンバー名1</value>
+  </data>
+  <data name="MEMBERNAME6" xml:space="preserve">
+    <value>メンバー名6</value>
+  </data>
+  <data name="MEMBERNAME7" xml:space="preserve">
+    <value>メンバー名7</value>
+  </data>
+  <data name="MEMBERNAME4" xml:space="preserve">
+    <value>メンバー名4</value>
+  </data>
+  <data name="MEMBERNAME5" xml:space="preserve">
+    <value>メンバー名5</value>
+  </data>
+  <data name="MEMBERNAME8" xml:space="preserve">
+    <value>メンバー名8</value>
+  </data>
+  <data name="MEMBERNAME9" xml:space="preserve">
+    <value>メンバー名9</value>
+  </data>
+  <data name="FILEOPENERROR" xml:space="preserve">
+    <value>ファイルオープンエラー</value>
+  </data>
+  <data name="CATEGORYNAME" xml:space="preserve">
+    <value>カテゴリー名</value>
+  </data>
+  <data name="GROUPNAME" xml:space="preserve">
+    <value>グループ名</value>
+  </data>
+  <data name="ERRORMSG" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="SHIFTDIR" xml:space="preserve">
+    <value>シフト方向</value>
+  </data>
+  <data name="PRINTERROR" xml:space="preserve">
+    <value>印刷処理に失敗しました。</value>
+  </data>
+  <data name="SDREADCOMPLETE" xml:space="preserve">
+    <value>SD読み込み完了</value>
+  </data>
+  <data name="ISSAVECLOSE" xml:space="preserve">
+    <value>保存してから閉じますか?</value>
+  </data>
+  <data name="FREQERROR" xml:space="preserve">
+    <value>入力エラー</value>
+  </data>
+  <data name="AIRBAND" xml:space="preserve">
+    <value>エアバンド</value>
+  </data>
+  <data name="FREQ" xml:space="preserve">
+    <value>周波数</value>
+  </data>
+  <data name="BAND" xml:space="preserve">
+    <value>バンド</value>
+  </data>
+  <data name="MODE" xml:space="preserve">
+    <value>モード</value>
+  </data>
+  <data name="STEP" xml:space="preserve">
+    <value>ステップ</value>
+  </data>
+  <data name="SKIP" xml:space="preserve">
+    <value>スキップ</value>
+  </data>
+</root>

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Oliver\Downloads\FTM-400D_ADMS-7(DG-ID)_EXP\ADMS-7(DG-ID)\Ftm400dAdms7.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D5D1A156-C251-4EAD-BA92-4733176B530D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>Ftm400dAdms7</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <ApplicationVersion>1.1.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Ftm400dAdms7</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="RprtCtrl">
+      <HintPath>lib\RprtCtrl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdmsForm.cs" />
+    <Compile Include="CSVFile.cs" />
+    <Compile Include="ComForm.cs" />
+    <Compile Include="FObject.cs" />
+    <Compile Include="FObjectConvert.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="DefaultFile.cs" />
+    <Compile Include="SerialProtocol.cs" />
+    <Compile Include="SerialRecvForm.cs" />
+    <Compile Include="BandMemory.cs" />
+    <Compile Include="DtmfMemory.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="MessageText.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="DataConverter.cs" />
+    <Compile Include="DataForm.cs" />
+    <Compile Include="Moji.cs" />
+    <Compile Include="FreqForm.cs" />
+    <Compile Include="KeyPressCancel.cs" />
+    <Compile Include="MoveForm.cs" />
+    <Compile Include="PrintForm.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="SearchForm.cs" />
+    <Compile Include="SerialSendForm.cs" />
+    <Compile Include="SetForm.cs" />
+    <Compile Include="SortForm.cs" />
+    <Compile Include="Strings.cs" />
+    <Compile Include="SymbolForm.cs" />
+    <Compile Include="VerForm.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Properties\Settings.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AdmsForm.resx" />
+    <EmbeddedResource Include="ComForm.resx" />
+    <EmbeddedResource Include="DataForm.resx" />
+    <EmbeddedResource Include="FreqForm.resx" />
+    <EmbeddedResource Include="MoveForm.resx" />
+    <EmbeddedResource Include="PrintForm.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx" />
+    <EmbeddedResource Include="SearchForm.resx" />
+    <EmbeddedResource Include="SerialProtocol.resx" />
+    <EmbeddedResource Include="SerialRecvForm.resx" />
+    <EmbeddedResource Include="SerialSendForm.resx" />
+    <EmbeddedResource Include="SetForm.resx" />
+    <EmbeddedResource Include="SortForm.resx" />
+    <EmbeddedResource Include="Strings.resx" />
+    <EmbeddedResource Include="SymbolForm.resx" />
+    <EmbeddedResource Include="VerForm.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

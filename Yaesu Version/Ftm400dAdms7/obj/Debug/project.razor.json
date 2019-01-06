@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "/home/oliver/Projects/Ham Radio Projects/Yaesu FTM-400XDR Programmer/Ftm400dAdms7/Ftm400dAdms7.csproj",
+  "TargetFramework": "v4.0",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}
