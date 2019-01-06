@@ -24,6 +24,15 @@ public class Encoder {
 			else {
 				offset = 0.0m;
 			}
+			if (duplex.Equals("-")) {
+				offset = -offset;
+			}
+			else if (duplex.Equals("split")) {
+				offset = 0.0m;
+			}
+			else if (duplex.Equals("+")) {
+				offset = offset;
+			}
 			string tone = columns[5];
 			decimal rtonefreq = Decimal.Parse(columns[6]);
 			decimal ctonefreq = Decimal.Parse(columns[7]);
