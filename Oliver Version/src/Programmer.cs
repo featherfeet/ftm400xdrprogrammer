@@ -2,26 +2,45 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO.Ports;
 
 public class Programmer {
 	static public void Main(string[] args) {
 		// Sort by distance or not.
 		bool sort = true;
 		// Parse arguments.
-		if (args.Length != 4) {
+		if (!(args.Length == 3 || args.Length == 4)) {
 			Console.WriteLine("Usage: ./Programmer.exe inputfile.dat vhfmemories.csv uhfmemories.csv outputfile.dat");
 			Console.WriteLine("inputfile.dat should be the .dat file from your Yaesu FTM-400XDR's SD card backup.");
 			Console.WriteLine("vhfmemories.csv should be a CSV in Chirp CSV format containing all the VHF repeaters you want programmed (can be downloaded from RepeaterBook).");
 			Console.WriteLine("uhfmemories.csv should be a CSV in Chirp CSV format containing all the UHF repeaters you want programmed (can be downloaded from RepeaterBook).");
 			Console.WriteLine("outputfile.dat should the name you want the programmed .dat file written to.");
+			Console.WriteLine("OR: ./Programmer.exe vhfmemories.csv uhfmemories.csv /dev/ttyUSBx
+			Console.WriteLine("vhfmemories.csv should be a CSV in Chirp CSV format containing all the VHF repeaters you want programmed (can be downloaded from RepeaterBook).");
+			Console.WriteLine("uhfmemories.csv should be a CSV in Chirp CSV format containing all the UHF repeaters you want programmed (can be downloaded from RepeaterBook).");
+			Console.WriteLine("/dev/ttyUSBx should be the /dev device of the serial port connected to the radio. On Windows, this would be COMx.");
 			return;
+		}
+		string mode;
+		if (args.Length == 3) {
+			mode = "SERIAL";
+		}
+		else if (args.Length == 4) {
+			mode = "SDCARD";
 		}
 		// Load settings from XML file.
 		Settings.LoadFromXmlFile();
 		// Decode file.
 		Database db = new Database();
 		DataConverter dc = new DataConverter();
-		db.Buffer = File.ReadAllBytes(args[0]);
+		if (mode.Equals("SDCARD")) {
+			db.Buffer = File.ReadAllBytes(args[0]);
+		}
+		SerialProtocol serialprotocol;
+		else if (mode.Equals("SERIAL")) {
+			SerialPort port = new SerialPort();
+			serialprotocol = new SerialProtocol();
+		}
 		dc.Decode(db);
 		// Dump data to HTML.
 		Dumper.Dump(db, "source.html");
