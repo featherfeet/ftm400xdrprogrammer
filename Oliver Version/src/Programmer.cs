@@ -6,7 +6,7 @@ using System.ComponentModel;
 public class Programmer {
 	static public void Main(string[] args) {
 		// Sort by distance or not.
-		bool sort = false;
+		bool sort = true;
 		// Parse arguments.
 		if (args.Length != 4) {
 			Console.WriteLine("Usage: ./Programmer.exe inputfile.dat vhfmemories.csv uhfmemories.csv outputfile.dat");
