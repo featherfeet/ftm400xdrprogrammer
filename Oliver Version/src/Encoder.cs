@@ -75,13 +75,13 @@ public class Encoder {
 				bandMemories[location].Mode = Array.IndexOf(DataForm.tbl_Mode, mode);
 				bandMemories[location].MemoryName = name;
 				if (string.Equals(tone, "Tone")) {
-					bandMemories[location].SqlType = Array.IndexOf(DataForm.tbl_SqlType_All, "TONE SQL");
+					bandMemories[location].SqlType = Array.IndexOf(DataForm.tbl_SqlType_ExOff_NonJPN, "TONE ENC");
 				}
 				else if (string.Equals(tone, "DTCS")) {
-					bandMemories[location].SqlType = Array.IndexOf(DataForm.tbl_SqlType_All, "DCS");
+					bandMemories[location].SqlType = Array.IndexOf(DataForm.tbl_SqlType_ExOff_NonJPN, "DCS");
 				}
 				else {
-					bandMemories[location].SqlType = Array.IndexOf(DataForm.tbl_SqlType_All, "OFF");
+					bandMemories[location].SqlType = Array.IndexOf(DataForm.tbl_SqlType_ExOff_NonJPN, "OFF");
 				}
 				bandMemories[location].ToneFreq = Array.IndexOf(DataForm.tbl_ToneFreq, rtonefreq + " Hz");
 				bandMemories[location].DcsCode = Array.IndexOf(DataForm.tbl_DcsCode, dtcscode.ToString().PadLeft(3, '0'));

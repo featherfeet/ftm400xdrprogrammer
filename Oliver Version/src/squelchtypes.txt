@@ -1,0 +1,7 @@
+noise off            
+t-tx tone_enc
+t-trx tone_sql
+t-rev rev_tone
+d-trx dcs
+prgm pr_freq
+pager pager

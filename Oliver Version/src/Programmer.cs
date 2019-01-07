@@ -5,6 +5,8 @@ using System.ComponentModel;
 
 public class Programmer {
 	static public void Main(string[] args) {
+		// Sort by distance or not.
+		bool sort = false;
 		// Parse arguments.
 		if (args.Length != 4) {
 			Console.WriteLine("Usage: ./Programmer.exe inputfile.dat vhfmemories.csv uhfmemories.csv outputfile.dat");
@@ -30,18 +32,20 @@ public class Programmer {
 			vhfCsvData.Add(vhfCsv.GetNextRow());
 		}
 		// Sort the CSV of VHF repeaters by how close the repeater is to Pleasanton.
-		Geocoder geocoder = new Geocoder();
+		var geocoder = new Geocoder();
 		var memories = new List<Tuple<int, double>>();
-		for (int i = 0; i < vhfCsvData.Count; i++) {
-			Console.WriteLine($"{i}/{vhfCsvData.Count - 1}");
-			memories.Add(new Tuple<int, double>(i, geocoder.DistanceBetween(vhfCsvData[i][12], "Pleasanton, CA 94566")));
+		if (sort) {
+			for (int i = 0; i < vhfCsvData.Count; i++) {
+				Console.WriteLine($"{i}/{vhfCsvData.Count - 1}");
+				memories.Add(new Tuple<int, double>(i, geocoder.DistanceBetween(vhfCsvData[i][12], "Pleasanton, CA 94566")));
+			}
+			memories.Sort((a, b) => a.Item2.CompareTo(b.Item2));
+			var newVhfCsvData = new List<string[]>();
+			foreach (var memory in memories) {
+				newVhfCsvData.Add(vhfCsvData[memory.Item1]);
+			}
+			vhfCsvData = newVhfCsvData;
 		}
-		memories.Sort((a, b) => a.Item2.CompareTo(b.Item2));
-		var newVhfCsvData = new List<string[]>();
-		foreach (var memory in memories) {
-			newVhfCsvData.Add(vhfCsvData[memory.Item1]);
-		}
-		vhfCsvData = newVhfCsvData;
 		// Parse UHF CSV.
 		CSV uhfCsv = new CSV(args[2]);
 		var uhfCsvData = new List<string[]>();
@@ -49,17 +53,19 @@ public class Programmer {
 			uhfCsvData.Add(uhfCsv.GetNextRow());
 		}
 		// Sort the CSV of UHF repeaters by how close the repeater is to Pleasanton.
-		memories = new List<Tuple<int, double>>();
-		for (int i = 0; i < uhfCsvData.Count; i++) {
-			Console.WriteLine($"{i}/{uhfCsvData.Count - 1}");
-			memories.Add(new Tuple<int, double>(i, geocoder.DistanceBetween(uhfCsvData[i][12], "Pleasanton, CA 94566")));
+		if (sort) {
+			memories = new List<Tuple<int, double>>();
+			for (int i = 0; i < uhfCsvData.Count; i++) {
+				Console.WriteLine($"{i}/{uhfCsvData.Count - 1}");
+				memories.Add(new Tuple<int, double>(i, geocoder.DistanceBetween(uhfCsvData[i][12], "Pleasanton, CA 94566")));
+			}
+			memories.Sort((a, b) => a.Item2.CompareTo(b.Item2));
+			var newUhfCsvData = new List<string[]>();
+			foreach (var memory in memories) {
+				newUhfCsvData.Add(uhfCsvData[memory.Item1]);
+			}
+			uhfCsvData = newUhfCsvData;
 		}
-		memories.Sort((a, b) => a.Item2.CompareTo(b.Item2));
-		var newUhfCsvData = new List<string[]>();
-		foreach (var memory in memories) {
-			newUhfCsvData.Add(uhfCsvData[memory.Item1]);
-		}
-		uhfCsvData = newUhfCsvData;
 		// Place the CSV repeater data into the database.
 		Encoder.Encode(vhfCsvData, db.aBandMemory);
 		Encoder.Encode(uhfCsvData, db.bBandMemory);
