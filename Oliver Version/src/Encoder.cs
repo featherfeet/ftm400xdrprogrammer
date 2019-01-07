@@ -78,7 +78,7 @@ public class Encoder {
 					bandMemories[location].SqlType = Array.IndexOf(DataForm.tbl_SqlType_All, "TONE SQL");
 				}
 				else if (string.Equals(tone, "DTCS")) {
-					bandMemories[location].SqlType = Array.IndexOf(DataForm.tbl_SqlType_All, "TONE DCS");
+					bandMemories[location].SqlType = Array.IndexOf(DataForm.tbl_SqlType_All, "DCS");
 				}
 				else {
 					bandMemories[location].SqlType = Array.IndexOf(DataForm.tbl_SqlType_All, "OFF");
