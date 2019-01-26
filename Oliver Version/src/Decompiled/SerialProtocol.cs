@@ -6,14 +6,13 @@
 
 using System;
 using System.ComponentModel;
-using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Resources;
 using System.Threading;
 using System.Timers;
 
-public class SerialProtocol : Form
+public class SerialProtocol
 {
   private byte[] DataArray = new byte[76800];
   private const int WAITSEC = 3000;
@@ -38,11 +37,7 @@ public class SerialProtocol : Form
   private SerialPort mySerial;
   private Database db;
   private System.Timers.Timer myTimer;
-  private IContainer components;
-  private Button btn_BerCancel;
-  private ProgressBar progressBar1;
   private BackgroundWorker backgroundWorker1;
-  private Label lbl_percentage;
 
   public SerialProtocol()
   {
@@ -63,18 +58,6 @@ public class SerialProtocol : Form
     this.SENDMESSAGE = "SENDING";
     this.RECVMESSAGE = "RECEIVING";
     this.CPUTYPERRMESSAGE = "CPU TYPE ERROR";
-    this.InitializeComponent();
-    if (isSend)
-    {
-      if (Settings.Instance.Datalogger)
-        File.WriteAllBytes("log/WriteDataLogger.bin", this.db.Buffer);
-      this.Text = this.SENDMESSAGE;
-    }
-    else
-    {
-      this.Text = this.RECVMESSAGE;
-      this.lbl_percentage.Text = "FTM400DOKCLECK";
-    }
     this.myTimer = new System.Timers.Timer();
     this.myTimer.Elapsed += new ElapsedEventHandler(this.OnTimerEvent);
     this.backgroundWorker1.WorkerSupportsCancellation = true;
@@ -104,7 +87,7 @@ public class SerialProtocol : Form
 
   public void Run()
   {
-    this.backgroundWorker1.RunWorkerAsync();
+    this.DoWork();
   }
 
   private void sendPtnA()
@@ -322,9 +305,8 @@ public class SerialProtocol : Form
     this.IsTimeout = false;
   }
 
-  private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+  private void DoWork()
   {
-    BackgroundWorker backgroundWorker = (BackgroundWorker) sender;
     try
     {
       if (this.IsSend)
@@ -342,7 +324,7 @@ public class SerialProtocol : Form
             this.sendPtnBorCorD(address);
             this.recvAck();
             int percentProgress = address * 100 / 76800;
-            backgroundWorker.ReportProgress(percentProgress);
+	    Console.WriteLine(percentProgress + "%");
           }
           address += 128;
         }
@@ -351,13 +333,13 @@ public class SerialProtocol : Form
         this.sendPtnBorCorD(128);
         this.recvAck();
         int percentProgress1 = (address + 128) * 100 / 76800;
-        backgroundWorker.ReportProgress(percentProgress1);
+	Console.WriteLine(percentProgress1);
         Thread.Sleep(10);
         this.startToTimer(1000.0);
         this.sendPtnE();
         this.recvAck();
         int percentProgress2 = (address + 128) * 100 / 76800;
-        backgroundWorker.ReportProgress(percentProgress2);
+	Console.WriteLine(percentProgress2);
         this.stopToTimer();
       }
       else
@@ -374,7 +356,7 @@ public class SerialProtocol : Form
             this.recvPtnBorCorD(address);
             this.sendAck();
             int percentProgress = address * 100 / 76800;
-            backgroundWorker.ReportProgress(percentProgress);
+            Console.WriteLine(percentProgress);
           }
           address += 128;
         }
@@ -382,104 +364,20 @@ public class SerialProtocol : Form
         this.recvPtnBorCorD(128);
         this.sendAck();
         int percentProgress1 = (address + 128) * 100 / 76800;
-        backgroundWorker.ReportProgress(percentProgress1);
+        Console.WriteLine(percentProgress1);
         this.startToTimer(1000.0);
         this.recvPtnE();
         this.sendAck();
         int percentProgress2 = (address + 128) * 100 / 76800;
-        backgroundWorker.ReportProgress(percentProgress2);
+        Console.WriteLine(percentProgress2);
         this.stopToTimer();
         this.DataArray.CopyTo((Array) this.db.Buffer, 0);
       }
     }
     catch
     {
-      backgroundWorker.ReportProgress(1000);
+      Console.WriteLine("1000");
     }
   }
 
-  private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-  {
-    this.btn_BerCancel.Enabled = false;
-    if (e.ProgressPercentage < 100)
-    {
-      this.lbl_percentage.Text = e.ProgressPercentage.ToString() + "％";
-      this.progressBar1.Value = e.ProgressPercentage;
-    }
-    else if (e.ProgressPercentage == 100)
-    {
-      this.lbl_percentage.Text = this.COMPLETEDMESSAGE;
-      this.progressBar1.Value = e.ProgressPercentage;
-      if (this.IsSend)
-        return;
-      Settings.Instance.MaskID = this.tmpMaskID;
-      Settings.Instance.MtxPTN = this.tmpMtxPTN;
-    }
-    else
-      this.lbl_percentage.Text = this.errorMessage;
-  }
-
-  private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-  {
-    this.btn_BerCancel.Enabled = true;
-    this.btn_BerCancel.Text = "Close";
-    if (!Settings.Instance.Datalogger)
-      return;
-    File.WriteAllBytes("log/ReadDataLogger.bin", this.db.Buffer);
-  }
-
-  private void btn_BerCancel_Click(object sender, EventArgs e)
-  {
-    this.PortClose();
-    this.backgroundWorker1.CancelAsync();
-    this.Close();
-  }
-
-  protected override void Dispose(bool disposing)
-  {
-    if (disposing && this.components != null)
-      this.components.Dispose();
-    base.Dispose(disposing);
-  }
-
-  private void InitializeComponent()
-  {
-    this.btn_BerCancel = new Button();
-    this.progressBar1 = new ProgressBar();
-    this.backgroundWorker1 = new BackgroundWorker();
-    this.lbl_percentage = new Label();
-    this.SuspendLayout();
-    this.btn_BerCancel.Location = new Point(94, 77);
-    this.btn_BerCancel.Name = "btn_BerCancel";
-    this.btn_BerCancel.Size = new Size(189, 23);
-    this.btn_BerCancel.TabIndex = 0;
-    this.btn_BerCancel.Text = "Cancel";
-    this.btn_BerCancel.UseVisualStyleBackColor = true;
-    this.btn_BerCancel.Click += new EventHandler(this.btn_BerCancel_Click);
-    this.progressBar1.Location = new Point(40, 42);
-    this.progressBar1.Name = "progressBar1";
-    this.progressBar1.Size = new Size(300, 23);
-    this.progressBar1.TabIndex = 1;
-    this.backgroundWorker1.WorkerReportsProgress = true;
-    this.backgroundWorker1.DoWork += new DoWorkEventHandler(this.backgroundWorker1_DoWork);
-    this.backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-    this.backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-    this.lbl_percentage.Location = new Point(0, 16);
-    this.lbl_percentage.Name = "lbl_percentage";
-    this.lbl_percentage.Size = new Size(384, 22);
-    this.lbl_percentage.TabIndex = 2;
-    this.lbl_percentage.Text = "0%";
-    this.lbl_percentage.TextAlign = ContentAlignment.MiddleCenter;
-    this.AutoScaleDimensions = new SizeF(6f, 12f);
-    this.AutoScaleMode = AutoScaleMode.Font;
-    this.ClientSize = new Size(383, 129);
-    this.ControlBox = false;
-    this.Controls.Add((Control) this.lbl_percentage);
-    this.Controls.Add((Control) this.progressBar1);
-    this.Controls.Add((Control) this.btn_BerCancel);
-    this.FormBorderStyle = FormBorderStyle.FixedSingle;
-    this.Name = nameof (SerialProtocol);
-    this.Text = "Form1";
-    this.ResumeLayout(false);
-  }
 }
