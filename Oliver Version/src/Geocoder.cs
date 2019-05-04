@@ -16,7 +16,7 @@ public class Geocoder {
 		try {
 			return cache[address];
 		}
-		catch (KeyNotFoundException e) {
+		catch {
 			// Pass.
 		}
 

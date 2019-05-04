@@ -7,7 +7,7 @@ using System.IO.Ports;
 public class Programmer {
 	static public void Main(string[] args) {
 		// Sort by distance or not.
-		bool sort = true;
+		bool sort = false;
 		// Parse arguments.
 		if (!(args.Length == 3 || args.Length == 4)) {
 			Console.WriteLine("Usage: ./Programmer.exe inputfile.dat vhfmemories.csv uhfmemories.csv outputfile.dat");
@@ -15,19 +15,7 @@ public class Programmer {
 			Console.WriteLine("vhfmemories.csv should be a CSV in Chirp CSV format containing all the VHF repeaters you want programmed (can be downloaded from RepeaterBook).");
 			Console.WriteLine("uhfmemories.csv should be a CSV in Chirp CSV format containing all the UHF repeaters you want programmed (can be downloaded from RepeaterBook).");
 			Console.WriteLine("outputfile.dat should the name you want the programmed .dat file written to.");
-			Console.WriteLine("");
-			Console.WriteLine("OR: ./Programmer.exe vhfmemories.csv uhfmemories.csv /dev/ttyUSBx");
-			Console.WriteLine("vhfmemories.csv should be a CSV in Chirp CSV format containing all the VHF repeaters you want programmed (can be downloaded from RepeaterBook).");
-			Console.WriteLine("uhfmemories.csv should be a CSV in Chirp CSV format containing all the UHF repeaters you want programmed (can be downloaded from RepeaterBook).");
-			Console.WriteLine("/dev/ttyUSBx should be the /dev device of the serial port connected to the radio. On Windows, this would be COMx.");
 			return;
-		}
-		string mode = "";
-		if (args.Length == 3) {
-			mode = "SERIAL";
-		}
-		else if (args.Length == 4) {
-			mode = "SDCARD";
 		}
 		// Load settings from XML file.
 		Settings.LoadFromXmlFile();
@@ -35,21 +23,8 @@ public class Programmer {
 		Database db = new Database();
 		// Initialize a dataconverter object that translates the radio's binary format into the database.
 		DataConverter dc = new DataConverter();
-		// If reading from a file, read the binary data from that file and into the database.
-		if (mode.Equals("SDCARD")) {
-			db.Buffer = File.ReadAllBytes(args[0]);
-		}
-		// If reading from the serial port, read the binary data from that port and into the database.
-		else if (mode.Equals("SERIAL")) {
-			SerialPort port = new SerialPort();
-			port.PortName = args[2];
-			SerialProtocol serialprotocol = new SerialProtocol(port, db, false);
-			serialprotocol.PortOpen();
-			Console.WriteLine("Tell the radio to clone itself out over serial, then press RETURN.");
-			Console.ReadLine();
-			serialprotocol.Run();
-			serialprotocol.PortClose();
-		}
+		// Read the binary data from the file and into the database.
+        db.Buffer = File.ReadAllBytes(args[0]);
 		dc.Decode(db);
 		// Dump data to HTML.
 		Dumper.Dump(db, "source.html");
@@ -98,21 +73,9 @@ public class Programmer {
 		Encoder.Encode(vhfCsvData, db.aBandMemory);
 		Encoder.Encode(uhfCsvData, db.bBandMemory);
 		// Save database to file (if in SD card mode).
-		if (mode.Equals("SDCARD")) {
-			Dumper.Dump(db, "destination.html");
-			dc.Encode(db);
-			byte[] buffer = db.Buffer;
-			File.WriteAllBytes(args[3], buffer);
-		}
-		else if (mode.Equals("SERIAL")) {
-			SerialPort port = new SerialPort();
-			port.PortName = args[2];
-			SerialProtocol serialprotocol = new SerialProtocol(port, db, true);
-			serialprotocol.PortOpen();
-			Console.WriteLine("Tell the radio to clone from serial, then press RETURN.");
-			Console.ReadLine();
-			serialprotocol.Run();
-			serialprotocol.PortClose();
-		}
+        Dumper.Dump(db, "destination.html");
+        dc.Encode(db);
+        byte[] buffer = db.Buffer;
+        File.WriteAllBytes(args[3], buffer);
 	}
 }

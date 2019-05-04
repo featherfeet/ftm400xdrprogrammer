@@ -37,7 +37,6 @@ public class SerialProtocol
   private SerialPort mySerial;
   private Database db;
   private System.Timers.Timer myTimer;
-  private BackgroundWorker backgroundWorker1;
 
   public SerialProtocol()
   {
@@ -60,7 +59,6 @@ public class SerialProtocol
     this.CPUTYPERRMESSAGE = "CPU TYPE ERROR";
     this.myTimer = new System.Timers.Timer();
     this.myTimer.Elapsed += new ElapsedEventHandler(this.OnTimerEvent);
-    this.backgroundWorker1.WorkerSupportsCancellation = true;
   }
 
   public void PortOpen()

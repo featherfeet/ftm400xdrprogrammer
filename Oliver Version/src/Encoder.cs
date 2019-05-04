@@ -31,7 +31,7 @@ public class Encoder {
 				offset = 0.0m;
 			}
 			else if (duplex.Equals("+")) {
-				offset = offset;
+                // No change to the offset.
 			}
 			string tone = columns[5];
 			decimal rtonefreq = Decimal.Parse(columns[6]);

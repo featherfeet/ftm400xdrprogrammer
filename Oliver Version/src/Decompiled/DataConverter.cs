@@ -1233,7 +1233,7 @@ public class DataConverter
     this.dat[182] = (byte) (this.db.FuncSet_Array2 + 1);
     this.dat[183] = (byte) (this.db.FuncSet_Array3 + 1);
     this.dat[184] = (byte) (this.db.FuncSet_Array4 + 1);
-    byte[] numArray1 = new byte[3];
+    //byte[] numArray1 = new byte[3];
     byte[] numArray2 = this.conv_DecimalTo3byteFreqBcd(this.db.WiresX_PresetFreq);
     this.dat[185] = (byte) ((((int) numArray2[2] & 15) << 4) + (((int) numArray2[0] & 240) >> 4));
     this.dat[186] = (byte) ((((int) numArray2[0] & 15) << 4) + (((int) numArray2[1] & 240) >> 4));
@@ -1469,7 +1469,7 @@ public class DataConverter
     this.dat[1299] = (byte) ((Decimal.ToInt32(this.db.MyPosition_ManualLatMM2) * 10 & 65280) >> 8);
     this.dat[1300] = (byte) (Decimal.ToInt32(this.db.MyPosition_ManualLatMM2) * 10 & (int) byte.MaxValue);
     this.bitSet(1301, this.db.MyPosition_ManualLon, 16);
-    byte[] numArray1 = new byte[2];
+    //byte[] numArray1 = new byte[2];
     byte[] numArray2 = this.conv_DecimalTo2byteBcd(this.db.MyPosition_ManualLonDD);
     this.bitSet(1301, (int) numArray2[0], 15);
     this.dat[1302] = numArray2[1];
@@ -1920,7 +1920,7 @@ public class DataConverter
 
   private void encodeMemoryCommon(BindingList<BandMemory> memory, int index, byte[] dat, int offset)
   {
-    byte[] numArray1 = new byte[3];
+    //byte[] numArray1 = new byte[3];
     Decimal recvFreq1 = memory[index].RecvFreq;
     this.bitSet(offset, DataForm.GetBandIdx(recvFreq1), 7);
     this.bitSet(offset, memory[index].Skip, 96);
@@ -2062,7 +2062,7 @@ public class DataConverter
     numArray1[2] = (byte) ((ulong) num3 % 10UL);
     long num4 = (num3 - (long) numArray1[2]) / 10L;
     numArray1[3] = (byte) ((ulong) num4 % 10UL);
-    long num5 = (num4 - (long) numArray1[3]) / 10L;
+    //long num5 = (num4 - (long) numArray1[3]) / 10L;
     numArray2[0] = (byte) (((uint) numArray1[3] << 4) + (uint) numArray1[2]);
     numArray2[1] = (byte) (((uint) numArray1[1] << 4) + (uint) numArray1[0]);
     return numArray2;
