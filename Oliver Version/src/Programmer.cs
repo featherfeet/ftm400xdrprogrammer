@@ -69,7 +69,9 @@ public class Programmer {
 			}
 			uhfCsvData = newUhfCsvData;
 		}
-		// Place the CSV repeater data into the database.
+		// Place the CSV repeater data into the database (take only the first 500 items because of how large the radio's memory is).
+        vhfCsvData = vhfCsvData.GetRange(0, 499);
+        uhfCsvData = uhfCsvData.GetRange(0, 499);
 		Encoder.Encode(vhfCsvData, db.aBandMemory);
 		Encoder.Encode(uhfCsvData, db.bBandMemory);
 		// Save database to file (if in SD card mode).

@@ -83,7 +83,7 @@ public class Encoder {
 				else {
 					bandMemories[location].SqlType = Array.IndexOf(DataForm.tbl_SqlType_ExOff_NonJPN, "OFF");
 				}
-				bandMemories[location].ToneFreq = Array.IndexOf(DataForm.tbl_ToneFreq, rtonefreq + " Hz");
+				bandMemories[location].ToneFreq = Array.IndexOf(DataForm.tbl_ToneFreq, String.Format("{0:0.0} Hz", rtonefreq));
 				bandMemories[location].DcsCode = Array.IndexOf(DataForm.tbl_DcsCode, dtcscode.ToString().PadLeft(3, '0'));
 				bandMemories[location].SendOut = Array.IndexOf(DataForm.tbl_SendOut, "HIGH");
 				bandMemories[location].Skip = Array.IndexOf(DataForm.tbl_Skip, "OFF");
