@@ -13,7 +13,7 @@ public class Dumper {
 			dump_file.WriteLine("<table>");
 			dump_file.WriteLine("<tr><th>No</th><th>RecvFreq</th><th>SendFreq</th><th>ShiftFreq</th><th>ShiftDir</th><th>Mode</th><th>MemoryName</th><th>SqlType</th><th>ToneFreq</th><th>DcsCode</th><th>PrTone</th><th>SendOut</th><th>Skip</th><th>Step</th><th>ClockShift</th><th>MemoryDir</th><th>Comment</th></tr>");
 			foreach (BandMemory bm in db.aBandMemory) {
-				dump_file.WriteLine($@"<tr><td>{bm.No}</td>
+				dump_file.WriteLine($@"<tr><td>{Int32.Parse(bm.No) + 1}</td>
 							<td>{bm.RecvFreq}</td>
 							<td>{bm.SendFreq}</td>
 							<td>{bm.ShiftFreq}</td>
@@ -36,7 +36,7 @@ public class Dumper {
 			dump_file.WriteLine("<table>");
 			dump_file.WriteLine("<tr><th>No</th><th>RecvFreq</th><th>SendFreq</th><th>ShiftFreq</th><th>ShiftDir</th><th>Mode</th><th>MemoryName</th><th>SqlType</th><th>ToneFreq</th><th>DcsCode</th><th>PrTone</th><th>SendOut</th><th>Skip</th><th>Step</th><th>ClockShift</th><th>MemoryDir</th><th>Comment</th></tr>");
 			foreach (BandMemory bm in db.bBandMemory) {
-				dump_file.WriteLine($@"<tr><td>{bm.No}</td>
+				dump_file.WriteLine($@"<tr><td>{Int32.Parse(bm.No) + 1}</td>
 							<td>{bm.RecvFreq}</td>
 							<td>{bm.SendFreq}</td>
 							<td>{bm.ShiftFreq}</td>
