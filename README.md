@@ -1,4 +1,5 @@
 # FTM-400XDR Programming Software
+### By Oliver Trevor, KM6WOX
 
 Yaesu's provided programming software for the FTM-400(XDR) radio series is buggy and unusable. The third-party RT Systems programming software is expensive. CHIRP does not support the FTM-400(XDR) series. The Yaesu and RT Systems software packages don't run on Linux. This project aims to fix all of these problems.
 
