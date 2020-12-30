@@ -1,6 +1,6 @@
 # FTM-400XDR Programming Software
 
-Yaesu's provided programming software for the FTM-400(XDR) radio series is buggy and unusable. The third-party RT Systems programming software is expensive. Neither of them run on Linux. This project aims to fix both of these problems.
+Yaesu's provided programming software for the FTM-400(XDR) radio series is buggy and unusable. The third-party RT Systems programming software is expensive. CHIRP does not support the FTM-400(XDR) series. The Yaesu and RT Systems software packages don't run on Linux. This project aims to fix all of these problems.
 
 We provide a single .NET executable (written in C#) that takes a .dat radio data backup file (obtained by telling the FTM-400(XDR) to back itself up to a microSD card), a csv file of A-band repeaters, a csv file of B-band repeaters, and an output filename. The output file will be a .dat file that can be copied back to the radio's microSD card and used to program the radio by restoring from backup.
 
